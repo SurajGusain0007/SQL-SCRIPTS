@@ -1,0 +1,156 @@
+-- SQL ON SNOWFLAKE-
+-- DDL (Data Definition Language):
+-- DDL commands are used to define and manage the structure of database objects. They are responsible for creating, altering, and -- dropping database objects, such as tables, indexes, views, and schemas. Common DDL commands include:
+-- DML (Data Manipulation Language):
+-- DML commands are used to manipulate or interact with data stored in the database. They primarily deal with querying, inserting, -- updating, and deleting data within tables. Common DML commands include:
+-- DDL commands are responsible for defining the database schema and managing the structure of the database itself, but they do not directly manipulate data within tables.
+-- In summary, DML commands deal with data manipulation (selecting, inserting, updating, and deleting records), while DDL commands are focused on defining and managing the structure of the database (creating, altering, and deleting database objects)
+-- // CREATE an Employee  table
+-- DDL Commands
+CREATE TABLE emp(
+    id int,
+    name varchar(20),
+    email varchar(20),
+    address varchar(20),
+    phone_no varchar(20),
+    profile varchar(20)
+) // CREATE A Student Table
+--- DDL Commands
+CREATE TABLE Student(
+    Roll_no int,
+    Student_name varchar(20),
+    email varchar(20),
+    address text,
+    phone_no Bigint
+) // can store texts up to 65535 characters
+-- Create a Companies table if it does not exist
+-- DDL Commands
+CREATE TABLE IF NOT EXISTS Companies (
+    id int,
+    name varchar(50),
+    address text,
+    email varchar(50),
+    phone varchar(10)
+);
+-- The SQL command will only create the Companies table if no table has the same name.
+-- DML Commands
+-- INSERT INTO EMPLOYEE TABLE
+INSERT INTO
+    EMP(id, name, email, address, phone_no)
+VALUES
+    (
+        1,
+        'Suraj',
+        'suraj002@gmail.com',
+        'Panipat',
+        '123456'
+    ),
+    (
+        2,
+        'Neeraj',
+        'nrj123@gmail.com',
+        'Gurguaon',
+        '123321'
+    ),
+    (
+        3,
+        'Vipin',
+        'vipin321@gmail.com',
+        'Sonipat',
+        '453212'
+    ) -- Insert the records in the Student table
+    -- DML Commands
+INSERT INTO
+    STUDENT
+VALUES(1, 'Virat', 'virat123@gmail.com', 'Mumbai', 123456),
+    (2, 'Rohan', 'rohan124@gmail.com', ' Delhi', 435213);
+-- Insert the records in the Company table with the help of Select Statement
+    -- DML Commands
+INSERT INTO
+    Companies
+SELECT
+    *
+FROM
+    STUDENT;
+-- Add a new column for grades in the Student table
+    -- DDL Commands
+ALTER TABLE
+    STUDENT
+ADD
+    COLUMN grade int;
+-- Drop a column grade in the student table
+    -- DDL Commands
+Alter table
+    STUDENT DROP COLUMN grade;
+-- Add a new column grade and result in the student table
+    -- DDL Commands
+ALTER TABLE
+    STUDENT
+ADD
+    COLUMN grade int,
+    results BOOLEAN;
+-- RENAME COLUMN IN THE EMPLOYEE TABLE
+    -- DDL Commands
+ALTER TABLE
+    EMP RENAME COLUMN profile to age;
+-- Modify the Column name age in the employee table
+    -- DDL Commands
+ALTER TABLE
+    EMP
+MODIFY
+    age varchar(21);
+-- DROP THE AGE COLUMN in the EMP table
+    -- DDL Commands
+Alter table
+    emp DROP COLUMN age;
+-- Add the new column in the emp table
+    -- DDL Commands
+ALTER TABLE
+    emp
+ADD
+    COLUMN age int;
+    -- Insert the age column value in the Emp table
+    -- DML Commands
+INSERT INTO
+    emp(age)
+values
+    (23),
+    (22),
+    (25) -- DROP TABLE
+    -- -- DDL Commands
+    DROP TABLE EMP;
+-- Update Student table
+    -- DML Commands
+UPDATE
+    STUDENT
+SET
+    address = 'Chandigarh'
+where
+    Roll_no = 2;
+-- UPDATE Companies
+    -- DML Commands
+UPDATE
+    COMPANIES
+SET
+    address = 'Chandigarh',
+    email = 'rohan456@gmail.com'
+where
+    id = 2;
+-- Delete command
+    -- DML Commands
+DELETE FROM
+    COMPANIES;
+where
+    id = 2;
+-- Truncate Command
+    -- DDL Commands
+    TRUNCATE TABLE COMPANIES;
+--  SQL DELETE	SQL TRUNCATE
+    -- SQL DELETE supports the WHERE clause.	SQL TRUNCATE doesn't support the WHERE clause.
+    -- SQL DELETE can remove single, multiple,
+    -- or all rows/records from a table.	      SQL TRUNCATE can only remove all the records from a table.
+    -- DQL Commands
+SELECT
+    *
+FROM
+    COMPANIES;
